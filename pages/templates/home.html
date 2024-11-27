@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Your Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #4CAF50;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        .navbar a:hover {
+            background-color: #45a049;
+            border-radius: 4px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+        }
+        .welcome-message {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .option-card {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
+        .option-card h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        .option-card a {
+            display: block;
+            margin-top: 15px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .option-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="nav-link">Home</a>
+        {% comment %} <a href="{% url 'profile' %}" class="nav-link">Profile</a>
+        <a href="{% url 'settings' %}" class="nav-link">Settings</a> {% endcomment %}
+        <a href="{% url 'logout' %}" class="nav-link logout">Logout</a>
+    </div>
+    
+
+
+</div>
+
+<div class="container">
+    <h1>Welcome to Your Dashboard</h1>
+    <p>Here you can manage your account, update settings, and more.</p>
+
+    <div class="welcome-message">
+        <h2>Welcome, {{user.username}}!</h2>
+        <p>We're glad to have you back. Choose an option below to get started:</p>
+    </div>
+
+    <div class="options">
+        <div class="option-card">
+            <h3>Manage Profile</h3>
+            <p>Update your personal details.</p>
+            <a href="/profile">Go to Profile</a>
+        </div>
+
+        <div class="option-card">
+            <h3>Change Settings</h3>
+            <p>Modify your account preferences.</p>
+            <a href="/settings">Go to Settings</a>
+        </div>
+
+        <div class="option-card">
+            <h3>View Reports</h3>
+            <p>Check out your activity and reports.</p>
+            <a href="/reports">View Reports</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

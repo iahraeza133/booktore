@@ -1,0 +1,40 @@
+<!-- bookstore/book_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+</head>
+<body>
+    <h1>Book List</h1>
+
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a> by {{ book.author.name }}
+            </li>
+        {% empty %}
+            <li>No books available.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Pagination -->
+    <div>
+        {% if books.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ books.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span>Page {{ books.number }} of {{ books.paginator.num_pages }}</span>
+
+        {% if books.has_next %}
+            <a href="?page={{ books.next_page_number }}">Next</a>
+            <a href="?page={{ books.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </div>
+
+    <p><a href="{% url 'book_create' %}">Add a New Book</a></p>
+</body>
+</html>

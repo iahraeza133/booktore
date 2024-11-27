@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+</head>
+<body>
+    <h1>{{ book.title }}</h1>
+    <p><strong>Author:</strong> {{ book.author.user.username }}</p>
+    <p><strong>Price:</strong> ${{ book.price }}</p>
+    <p><strong>user:</strong> ${{ book.user }}</p>
+    <p><strong>Publication Year:</strong> {{ book.publication_year }}</p>
+
+    <hr>
+
+    <h2>Comments</h2>
+    {% if comments %}
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <strong>{{ comment.user.username }}</strong> گفت:
+                    <p>{{ comment.content }}</p>
+                    <small><em>در تاریخ {{ comment.created_at|date:"Y-m-d H:i" }}</em></small>
+
+           
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>هنوز هیچ نظری برای این کتاب ثبت نشده است.</p>
+    {% endif %}
+
+    <hr>
+
+    <!-- فرم ارسال کامنت جدید -->
+    <h3>نظر خود را وارد کنید:</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">ارسال نظر</button>
+    </form>
+
+    <p><a href="{% url 'book_list' %}">Back to Book List</a></p>
+</body>
+</html>

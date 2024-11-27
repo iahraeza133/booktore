@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>ورود</title>
+</head>
+<body>
+    <h1>لطفا وارد حساب کاربری خود شوید</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <!-- فیلدهای فرم لاگین -->
+        <label for="username">نام کاربری:</label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="password">رمز عبور:</label>
+        <input type="password" name="password" id="password" required>
+
+        <button type="submit">ورود</button>
+    </form>
+</body>
+</html>
